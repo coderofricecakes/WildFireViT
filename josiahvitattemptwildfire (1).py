@@ -182,7 +182,7 @@ def train_and_evaluate(model, train_loader, test_loader, criterion, optimizer, e
 
 from google.colab import drive
 drive.mount('/content/drive') #Mount Google Drive to access data
-image_dir = "/content/drive/MyDrive/archive" #Directory of the image data
+image_dir = "/content/drive/MyDrive/archive" #CHANGE ARCHIVE LOCATION
 dataset = SatelliteWildfireDataset(image_dir)
 
 #Split data set into training and testing (80/20 split)
@@ -201,7 +201,7 @@ optimizer = torch.optim.Adam(model.parameters(), lr=0.001) #Define the optimizer
 
 #TRAIN THIS CODE PLEAAASEEEEEEEEE
 model = train_and_evaluate(model, train_loader, test_loader, criterion, optimizer, epochs=1) #You can change the epoch here. right now its set to 1 so it doesnt run forever
-torch.save(model.state_dict(), '/content/drive/MyDrive/wildfire_model.pth')
+torch.save(model.state_dict(), '/content/drive/MyDrive/wildfire_model.pth') #Choose location to save model
 print("Saved the model to my Drive!") #PLEASE SAVE
 
 """#User Import
@@ -215,7 +215,7 @@ drive.mount('/content/drive') #Mount drive AGAIN to gain access to the saved mod
 model = WildfireViTModel()  #Create new model
 
 #Load saved weights into the model
-model.load_state_dict(torch.load('/content/drive/MyDrive/wildfire_model.pth', weights_only=True)) #Location of where the model is
+model.load_state_dict(torch.load('/content/drive/MyDrive/wildfire_model.pth', weights_only=True)) #Choose location to access model
 
 #Move to cuda if available
 if torch.cuda.is_available():
